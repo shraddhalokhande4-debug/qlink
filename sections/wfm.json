@@ -3,6 +3,6 @@
   "cards": [
     { "theme": "itsm",       "icon": "🔧", "text": "ITSM",          "url": "https://oneitsm.onbmc.com/arsys/forms/onbmc-s/SHR%3ALandingConsole/Default+Administrator+View/?cacheid=6a42250" },
     { "theme": "dashboard",  "icon": "🏆", "text": "CRM Dashboard",   "url": "http://10.160.222.21:7777/index.html/" },
-    { "theme": "audit",  "icon": "🏆", "text": "PIM",   "url": "https://puam.vodafone.qa/PasswordVault/v10/logon?returnUrl=%2F" }
+    { "theme": "audit",  "icon": "🏆", "text": "LoginPage",   "url": "https://vfq.fs.ocs.oraclecloud.com/" }
   ]
 }
