@@ -1,0 +1,9 @@
+[
+
+  { "id": "crm",       "label": "📁 CRM Applications", "file": "sections/crm.json" },
+
+  { "id": "wfm", "label": "📁 SAAS Application", "file": "sections/wfm.json" },
+
+  { "id": "brm",     "label": "📁 Billing Cycle Application", "file": "sections/brm.json" }
+
+]
