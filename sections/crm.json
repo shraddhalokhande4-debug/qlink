@@ -3,6 +3,8 @@
   "cards": [
     { "theme": "itsm",       "icon": "🔧", "text": "ITSM",          "url": "https://oneitsm.onbmc.com/arsys/forms/onbmc-s/SHR%3ALandingConsole/Default+Administrator+View/?cacheid=6a42250" },
     { "theme": "dashboard",  "icon": "🏆", "text": "CRM Dashboard",   "url": "http://10.160.222.21:7777/index.html/" },
-    { "theme": "audit",  "icon": "🏆", "text": "PIM",   "url": "https://puam.vodafone.qa/PasswordVault/v10/logon?returnUrl=%2F" }
+    { "theme": "audit",  "icon": "🏆", "text": "PIM",   "url": "https://puam.vodafone.qa/PasswordVault/v10/logon?returnUrl=%2F" },
+    { "theme": "audit",  "icon": "🏆", "text": "CO PILOT OrderManagement",   "url": "https://m365.cloud.microsoft/chat/?titleId=T_a07da0a0-cf88-5502-426a-f2375462c1dc&source=agentCenterDialog" }
+    
   ]
 }
