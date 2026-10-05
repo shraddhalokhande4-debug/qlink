@@ -1,15 +1,8 @@
 {
   "title": "📁 CRM Application",
   "cards": [
-    { "theme": "SOP",        "icon": "📊", "text": "SOP",       "url": "https://grafana.dev.abp.pub.sol-vf.de/" },
-    { "theme": "Recordings", "icon": "🎫", "text": "Jira",          "url": "https://de.jira.agile.vodafone.com/secure/RapidBoard.jspa?rapidView=3565" },
-    { "theme": "confluence", "icon": "📚", "text": "Confluence",    "url": "https://de.confluence.agile.vodafone.com/pages/viewpage.action?spaceKey=SOLS&title=%5BABP%5D++Solstice+Operations+Manual+Blueprint" },
-    { "theme": "doc",        "icon": "📄", "text": "DOD",           "url": "https://de.confluence.agile.vodafone.com/pages/viewpage.action?spaceKey=SOLS" },
-    { "theme": "itsm",       "icon": "🔧", "text": "ITSM",          "url": "https://oneitsm.onbmc.com/arsys/forms/onbmc-s/SHR%3ALandingConsole/Default+Administrator+View/?cacheid=6dcc41d" },
-    { "theme": "argocd",     "icon": "⚙️", "text": "ArgoCD",        "url": "https://argocd-pref-abp.mgmt.pub.sol-vf.de" },
-    { "theme": "portal",     "icon": "🌍", "text": "DE-Citrix",     "url": "https://vfg-citrix-int.vodafone.com/logon/LogonPoint/tmindex.html" },
-    { "theme": "portal",     "icon": "💻", "text": "Dev Client",    "url": "https://vgoa.caas-int.vodafone.com/logon/LogonPoint/tmindex.html" },
-    { "theme": "dashboard",  "icon": "📈", "text": "CRM Dashboard", "url": "https://admin.prod.abp.pub.sol-vf.de/platform/#/en-us/" },
-    { "theme": "dashboard",  "icon": "🏆", "text": "Champ Login",   "url": "https://myttwos.vf-de.corp.vodafone.com/" }
+    { "theme": "itsm",       "icon": "🔧", "text": "ITSM",          "url": "https://oneitsm.onbmc.com/arsys/forms/onbmc-s/SHR%3ALandingConsole/Default+Administrator+View/?cacheid=6a42250" },
+    { "theme": "dashboard",  "icon": "🏆", "text": "CRM Dashboard",   "url": "http://10.160.222.21:7777/index.html/" },
+    { "theme": "audit",  "icon": "🏆", "text": "PIM",   "url": "https://puam.vodafone.qa/PasswordVault/v10/logon?returnUrl=%2F" }
   ]
 }
