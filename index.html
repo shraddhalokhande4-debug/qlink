@@ -1,259 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vodafone Application Portal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QLINK Application Portal</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<style>
 
-    body {
-      background: #f4f6f9;
-      padding: 30px;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-    .site-header {
-      background: linear-gradient(90deg, #e60000, #990000);
-      text-align: center;
-      max-width: 1200px;
-      margin: 0 auto 30px;
-      padding: 8px 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(153, 0, 0, 0.35);
-    }
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
 
-    .site-header .brand {
-      height: 60px;
-      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
-    }
+/* ==========================================
+   QLINK HEADER
+========================================== */
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
+.site-header{
+    background:linear-gradient(135deg,#081220,#0f2342,#162f5c);
+    max-width:1200px;
+    margin:0 auto 30px;
+    padding:20px 30px;
+    border-radius:18px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
 
-    .section-select-wrap {
-      max-width: 1200px;
-      margin: 0 auto 25px;
-      text-align: center;
-    }
+.site-header::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#ff003c,#ff4d6d,#ff003c);
+}
 
-    .section-select {
-      width: 100%;
-      max-width: 400px;
-      padding: 12px 16px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #990000;
-      border: 2px solid #e60000;
-      border-radius: 10px;
-      background: #fff;
-      cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
+.brand{
+    height:90px;
+    margin-bottom:10px;
+    transition:0.3s ease;
+}
 
-    .folder {
-      background: #fff;
-      border-radius: 14px;
-      margin-bottom: 20px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      display: none;
-    }
+.brand:hover{
+    transform:scale(1.05);
+}
 
-    .load-hint {
-      display: none;
-      margin-top: 12px;
-      font-size: 14px;
-      color: #990000;
-    }
+.portal-title{
+    color:white;
+    font-weight:700;
+    font-size:28px;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
 
-    .folder.active {
-      display: block;
-    }
+.portal-subtitle{
+    color:#b7c6da;
+    font-size:14px;
+    margin-bottom:0;
+}
 
-    .folder-title {
-      width: 100%;
-      padding: 18px 20px;
-      text-align: left;
-      border: none;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #e60000, #990000);
-    }
+/* ==========================================
+   SECTION DROPDOWN
+========================================== */
 
-    .folder-content {
-      padding: 20px;
-    }
+.section-select-wrap{
+    max-width:1200px;
+    margin:0 auto 25px;
+    text-align:center;
+}
 
-    .links {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-    }
+.section-select{
+    width:100%;
+    max-width:450px;
+    padding:12px 18px;
+    font-size:15px;
+    font-weight:600;
+    border:none;
+    border-radius:12px;
+    background:white;
+    color:#162f5c;
+    box-shadow:0 5px 15px rgba(0,0,0,0.12);
+}
 
-    .card {
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      text-align: left;
-      transition: all .3s ease;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-    }
+.load-hint{
+    display:none;
+    margin-top:10px;
+    color:#d6003f;
+}
 
-    .card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    }
+/* ==========================================
+   FOLDER CARDS
+========================================== */
 
-    /* Color Themes */
-    .grafana { background: linear-gradient(135deg, #f46800, #ff9800); }
-    .jira { background: linear-gradient(135deg, #0052cc, #2684ff); }
-    .confluence { background: linear-gradient(135deg, #36b37e, #009688); }
-    .doc { background: linear-gradient(135deg, #6f42c1, #9c27b0); }
-    .citrix { background: linear-gradient(135deg, #ff9800, #ff5722); }
-    .itsm { background: linear-gradient(135deg, #00a8e8, #009688); }
-    .argocd { background: linear-gradient(135deg, #ef5350, #d32f2f); }
-    .portal { background: linear-gradient(135deg, #607d8b, #455a64); }
-    .dashboard { background: linear-gradient(135deg, #4caf50, #2e7d32); }
-    .sharepoint { background: linear-gradient(135deg, #0078d4, #005a9e); }
-    .audit { background: linear-gradient(135deg, #8e24aa, #5e35b1); }
+.container{
+    max-width:1200px;
+    margin:auto;
+}
 
-    .site-footer {
-      background: linear-gradient(90deg, #e60000, #990000);
-      color: #fff;
-      text-align: center;
-      max-width: 1200px;
-      margin: 30px auto 0;
-      padding: 16px 0;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(153, 0, 0, 0.35);
-    }
-  </style>
+.folder{
+    background:white;
+    border-radius:16px;
+    overflow:hidden;
+    margin-bottom:20px;
+    display:none;
+    box-shadow:0 6px 20px rgba(0,0,0,0.10);
+}
 
-  <script>
-    /* Dropdown entries live in sections/sections.json; each one points to its own JSON file. */
-    var MANIFEST = "sections/sections.json";
+.folder.active{
+    display:block;
+}
 
-    function showSection(id) {
-      document.querySelectorAll(".folder").forEach(function (folder) {
-        folder.classList.toggle("active", folder.id === id);
-      });
-    }
+.folder-title{
+    background:linear-gradient(135deg,#162f5c,#0f2342);
+    color:white;
+    padding:18px 20px;
+    font-weight:700;
+    font-size:18px;
+}
 
-    function openLink(url) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
+.folder-content{
+    padding:20px;
+}
 
-    function getJson(url) {
-      return fetch(url).then(function (response) {
-        if (!response.ok) { throw new Error(response.status + " " + response.statusText); }
-        return response.json();
-      });
-    }
+.links{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:15px;
+}
 
-    function buildCard(card) {
-      var button = document.createElement("button");
-      button.className = "card " + (card.theme || "portal");
-      button.textContent = ((card.icon || "") + " " + (card.text || "")).trim();
-      button.addEventListener("click", function () { openLink(card.url); });
-      return button;
-    }
+.card{
+    border:none;
+    color:white;
+    padding:18px;
+    border-radius:14px;
+    text-align:left;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+}
 
-    function buildFolder(section, data, error) {
-      var folder = document.createElement("div");
-      folder.className = "folder";
-      folder.id = section.id;
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
 
-      var title = document.createElement("div");
-      title.className = "folder-title";
-      title.textContent = (data && data.title) || section.label;
-      folder.appendChild(title);
+/* CARD COLORS */
 
-      var content = document.createElement("div");
-      content.className = "folder-content";
+.grafana{
+background:linear-gradient(135deg,#ff7b00,#ff9800);
+}
 
-      if (error) {
-        content.textContent = "Could not load " + section.file + " (" + error.message + ")";
-      } else {
-        var links = document.createElement("div");
-        links.className = "links";
-        (data.cards || []).forEach(function (card) { links.appendChild(buildCard(card)); });
-        content.appendChild(links);
-      }
+.jira{
+background:linear-gradient(135deg,#0052cc,#2684ff);
+}
 
-      folder.appendChild(content);
-      return folder;
-    }
+.confluence{
+background:linear-gradient(135deg,#00a67e,#36b37e);
+}
 
-    function init() {
-      var select = document.getElementById("sectionSelect");
-      var container = document.getElementById("sections");
+.doc{
+background:linear-gradient(135deg,#6a11cb,#9c27b0);
+}
 
-      return getJson(MANIFEST).then(function (sections) {
-        return Promise.all(sections.map(function (section) {
-          return getJson(section.file)
-            .then(function (data) { return { section: section, data: data }; })
-            .catch(function (error) { return { section: section, error: error }; });
-        }));
-      }).then(function (loaded) {
-        loaded.forEach(function (item) {
-          var option = document.createElement("option");
-          option.value = item.section.id;
-          option.textContent = item.section.label || (item.data && item.data.title) || item.section.id;
-          select.appendChild(option);
+.citrix{
+background:linear-gradient(135deg,#ff9800,#ff5722);
+}
 
-          container.appendChild(buildFolder(item.section, item.data, item.error));
-        });
-        if (loaded.length) { showSection(loaded[0].section.id); }
-      });
-    }
+.itsm{
+background:linear-gradient(135deg,#00a8e8,#009688);
+}
 
-    document.addEventListener("DOMContentLoaded", function () {
-      init().catch(function () {
-        document.getElementById("loadHint").style.display = "block";
-      });
-      if (location.protocol === "file:") {
-        document.getElementById("loadHint").style.display = "block";
-      }
-    });
-  </script>
+.argocd{
+background:linear-gradient(135deg,#ef5350,#d32f2f);
+}
+
+.portal{
+background:linear-gradient(135deg,#546e7a,#37474f);
+}
+
+.dashboard{
+background:linear-gradient(135deg,#43a047,#1b5e20);
+}
+
+.sharepoint{
+background:linear-gradient(135deg,#0078d4,#005a9e);
+}
+
+.audit{
+background:linear-gradient(135deg,#8e24aa,#5e35b1);
+}
+
+/* ==========================================
+   QLINK FOOTER
+========================================== */
+
+.site-footer{
+    background:linear-gradient(135deg,#081220,#0f2342,#162f5c);
+    color:white;
+    text-align:center;
+    max-width:1200px;
+    margin:30px auto 0;
+    padding:22px;
+    border-radius:18px;
+    border-top:3px solid #ff003c;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+.site-footer p{
+    margin:0;
+    color:#d8e0ea;
+    letter-spacing:1px;
+}
+
+.footer-name{
+    color:#ff295b;
+    font-weight:700;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="site-header">
-    <img class="brand" src="qlink.png" alt="qlink">
-  </div>
+<!-- HEADER -->
 
-  <div class="section-select-wrap">
-    <select id="sectionSelect" class="section-select" onchange="showSection(this.value)"></select>
+<div class="site-header">
+
+    <img class="brand" src="qlink.png" alt="QLINK Logo">
+
+    <h1 class="portal-title">
+        QLINK Application Portal
+    </h1>
+
+    <p class="portal-subtitle">
+        Connecting Applications • Documents • Knowledge • Dashboards
+    </p>
+
+</div>
+
+<!-- DROPDOWN -->
+
+<div class="section-select-wrap">
+
+    <select id="sectionSelect"
+            class="section-select"
+            onchange="showSection(this.value)">
+    </select>
+
     <div id="loadHint" class="load-hint">
-      Sections are loaded from the <code>sections JSON files, so open this page through a web server
-      (for example <code>python -m http.server</code>) instead of double-clicking the file.
+        Open this page using a local web server.
     </div>
-  </div>
 
-  <div class="container" id="sections"></div>
+</div>
 
-  <footer class="site-footer">
-    <p class="mb-0">Design and Develop by Shraddha Lokhande</p>
-  </footer>
+<!-- DYNAMIC SECTIONS -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<div class="container" id="sections">
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <p>
+        Design & Developed by
+        <span class="footer-name">Shraddha Lokhande</span>
+    </p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-</html></code>
+</html>
